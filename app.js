@@ -20,15 +20,44 @@ function obtenerFecha (){
     let parrafoHora = document.getElementById('hora');
 
     let segundos = fechaActual.getSeconds();
+    let horas = fechaActual.getHours();
 
     if(segundos<10){
 
         segundos = '0' + segundos;
     }
 
-    parrafoHora.innerHTML = `${fechaActual.getHours()}:${fechaActual.getMinutes()}:${segundos}`
+    if(horas <10){
+        horas = '0' + horas;
+    }
+
+    parrafoHora.innerHTML = `${horas}:${fechaActual.getMinutes()}:${segundos}`
 
 
 
 }
-setInterval(obtenerFecha, 1000);
+setInterval(obtenerFecha, 1);
+
+function nightMode(){
+    let btn = document.getElementById('boton');
+    let body = document.getElementById('body');
+    let texto = document.getElementById('texto')
+    let icono = document.getElementById('icono')
+
+    if(icono.className === 'fa-solid fa-sun'){
+
+        body.className = 'body2'
+        texto.className = 'titulo2 azul'
+        btn.className = 'btn btn-dark'
+        icono.className = 'fa-solid fa-moon'
+
+    }else{
+        
+        body.className = 'body'
+        texto.className = 'titulo azul'
+        btn.className = 'btn btn-outline-light'
+        icono.className = 'fa-solid fa-sun'
+    }
+
+    
+}
